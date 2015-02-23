@@ -1,0 +1,24 @@
+{
+  "name": "d3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --inline --no-info --content-base src"
+  },
+  "author": "",
+  "license": "",
+  "dependencies": {
+    "css-loader": "^0.9.1",
+    "file-loader": "^0.8.1",
+    "json-loader": "0.5.1",
+    "jsonp": "0.1.0",
+    "jsx-loader": "0.12.2",
+    "sass-loader": "^0.4.0-beta.1",
+    "style-loader": "^0.8.3",
+    "url-loader": "^0.5.5",
+    "webpack": "1.4.15",
+    "webpack-dev-server": "1.7.0"
+  }
+}
