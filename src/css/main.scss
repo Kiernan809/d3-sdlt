@@ -1,3 +1,9 @@
+// @import 'normalize.css';
+@import '../../node_modules/nvd3/nv.d3.css';
+@import 'base';
+
 body {
-  background:pink;
+  padding:1em;
+  background:#EEE;
+  color:#222;
 }

@@ -1,38 +1,57 @@
 <!doctype html>
 <html class="no-js" lang="">
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title></title>
-    <style type='text/css'>
-      svg {
-        border: 1px solid black;
-        background: white;
-    }
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    .axis .domain, .axis .tick {
-        stroke: #000;
-        fill: none;
-    }
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-    .title {
-        fill: #666;
-        font-family: Helvetica, sans-serif;  /* Helvetica is cool, right? */
-        text-anchor: middle;
-        font-size: 24px;
-    }
+    <link rel="stylesheet" href="/__compiled/main.css">
+<style>
 
-    .bar {
-        fill: #fcc;
-        stroke: #444;
-    }
+body {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}
+
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+/*svg { display:block; width:100%; }*/
+
+/*.nv-background { fill:#DDD; }*/
+
 </style>
 </head>
 <body>
     <p>Hello world! This is HTML5 Boilerplate.</p>
+    <p>Hello world! This is HTML5 Boilerplate.</p>
 
-    <div id="main"></div>
-    <div id="chart"></div>
+    <div id="app"></div>
 
-    <script src="/build/shared.js"></script>
-    <script src="/build/main.js"></script>
+    <div id="d3"></div>
+
+    <div id="chart">
+        <svg height="500px"></svg>
+    </div>
+
+    <script src="/__compiled/shared.js"></script>
+    <script src="/__compiled/build.js"></script>
 </body>
 </html>
