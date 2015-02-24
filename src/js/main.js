@@ -1,83 +1,38 @@
 var d3 = require('d3')
 ,   nv = require('nvd3')
 ,   nv = window.nv // What?
+,   taxCalc = require('./calctax.js')
+,   __ = require('lodash')
 ;; // End vars.
 
-// require('nvd3/nv.d3.css');
 require('../css/main.scss');
-
-var rates = {
-    // threshold: %.rate,
-    previous: {
-        0: 0.00,
-        125000: 0.01,
-        250000: 0.03,
-        500000: 0.04,
-        1000000: 0.05,
-        2000000: 0.07
-    },
-    current: {
-        0: 0.00,
-        125000: 0.02,
-        250000: 0.05,
-        925000: 0.10,
-        1500000: 0.12
-    }
-};
-
-window.d3Data = [{
-    0: 0.00,
-    125000: 0.01,
-    250000: 0.03,
-    500000: 0.04,
-    1000000: 0.05,
-    2000000: 0.07
-}, {
-    0: 0.00,
-    125000: 0.02,
-    250000: 0.05,
-    925000: 0.10,
-    1500000: 0.12
-}];
+require('../../node_modules/nvd3/nv.d3.css');
 
 
-// var root = d3.select('#chart').append('svg')
-//     .attr('width', '100%')
-//     .attr('height', 400)
-//     .style('border', '1px solid black');
-
-// root.selectAll('rect')
-//     .data([5, 25, 80]).enter()
-//   .append('rect')
-//     .attr('x', Object)
-//     .attr('y', Object)
-//     .attr('width', 15)
-//     .attr('height', 10)
-//     .attr('fill', '#c63')
-//     .attr('stroke', 'black');
-
-console.log("nv: ", nv);
-d3.json('/js/cumulativeLineData.json', function(data) {
-    console.log("nv: ", nv);
+d3.json('/js/taxData.json', function(data) {
     nv.addGraph( function() {
-        var chart = nv.models.cumulativeLineChart()
-            .x(function(d) {
+        var chart = nv.models.lineChart()
+            .x( function(d) {
                 return d[0]
             })
-            .y(function(d) {
-                return d[1] / 100
+            .y( function(d) {
+                return d[1]
             }) //adjusting, 100% is 1.00, not 100 as it is in the data
-            .color(d3.scale.category10().range())
+            .color( d3.scale.category10().range() )
             .useInteractiveGuideline(true);
 
         chart.xAxis
-            .tickValues([1078030800000, 1122782400000, 1167541200000, 1251691200000])
-            .tickFormat(function(d) {
-                return d3.time.format('%x')(new Date(d))
+            .tickValues([300000, 600000, 900000, 1500000, 2000000])
+            .tickFormat( function(d) {
+                var format = d3.format(',');
+                return '£' + format(d);
             });
 
         chart.yAxis
-            .tickFormat(d3.format(',.1%'));
+            .tickFormat( function(d) {
+                var format = d3.format(',');
+                return '£' + format(d);
+            });
 
         d3.select('#chart svg')
             .datum(data)
@@ -91,7 +46,28 @@ d3.json('/js/cumulativeLineData.json', function(data) {
 });
 
 
-setTimeout( function() {
-    var nv = require('nvd3')
-    console.log("NV: ", nv);
-}, 10000);
+// console.log( "345k 2014 SDLT: ", taxCalc.getTax(2014, 345000) );
+// console.log( "345k 2015 SDLT: ", taxCalc.getTax(2015, 345000) );
+
+
+// // getInput
+// var stdIterator = 500;
+// var getInput = parseInt('1300000');
+
+// // nearest 5k...
+// var nearest = stdIterator * Math.round( getInput / stdIterator )
+
+// var display = new Array(2600);
+// display = __.map( display, function(n, i) {
+//     var x = stdIterator * (i + 1);
+
+//     // If number > 75k, input in the middle of graph.
+//     return [ (nearest - x >= 0 ? nearest - x : 0), nearest + x ];
+// })
+
+// display.push(getInput);
+// display = __.uniq( __.flattenDeep( display ) ).sort(function(a,b) { return a - b });
+
+// __.map( display, function(n, i) {
+//     return [n, parseInt(taxCalc.getTax(2014, n).toFixed(2)) ]
+// });

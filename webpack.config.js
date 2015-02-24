@@ -23,7 +23,7 @@ var config = {
         test: /\.js$/,
         loader: 'jsx-loader?harmony'
       }, {
-        test: /\.scss$/,
+        test: /\.(scss|css)$/,
         loader: ExtractTextPlugin.extract(
           'style-loader', 'css-loader!sass-loader?outputStyle=expanded' +
           '&includePaths[]='+ (path.resolve(__dirname, './bower_components')) +
