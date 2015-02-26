@@ -33,22 +33,26 @@ body {
   stroke-width: 1.5px;
 }
 
-/*svg { display:block; width:100%; }*/
-
-/*.nv-background { fill:#DDD; }*/
+  form {
+    text-align:center;
+    padding:20px;
+  }
+  input, button {
+    padding:10px;
+    display:inline-block;
+  }
 
 </style>
 </head>
 <body>
-    <p>Hello world! This is HTML5 Boilerplate.</p>
-    <p>Hello world! This is HTML5 Boilerplate.</p>
-
-    <div id="app"></div>
-
-    <div id="d3"></div>
+    <form action="#">
+      <input type="number">
+      <button>Show</button>
+    </form>
 
     <div id="chart">
-        <svg height="500px"></svg>
+      <!-- <h1>&pound;0 &ndash; &pound;2.6m</h1> -->
+      <svg height="500px"></svg>
     </div>
 
     <script src="/__compiled/shared.js"></script>
