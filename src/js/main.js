@@ -69,10 +69,10 @@ function inputToData(input, nValues, iterator) {
 
     // For each value, create x and y values to plot.
     var data = [{
-        "key": "2014 ",
+        "key": "2014 Stamp Duty rate",
         "values": __.map( display, function(n, i) { return [n, parseInt(taxCalc.getTax(2014, n).toFixed(2)) ] })
     }, {
-        "key": "2015 ",
+        "key": "2015 Stamp Duty rate",
         "values": __.map( display, function(n, i) { return [n, parseInt(taxCalc.getTax(2015, n).toFixed(2)) ] })
     }];
 
@@ -93,6 +93,7 @@ $(function() {
 
         redraw();
 
+        // Here we insert a vertical line intersecting the input value.
         d3.selectAll('#chart .lineV').remove();
         var verticalLine = d3.select('#chart svg .nv-linesWrap').append('line')
         .attr({
