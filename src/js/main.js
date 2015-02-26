@@ -16,7 +16,8 @@ function redraw() {
         chart = nv.models.lineChart()
         .x( function(d) { return d[0] })
         .y( function(d) { return d[1] })
-        .color( d3.scale.category10().range() )
+        // .color(["#dbdb8d", "#17becf", "#9edae5"])
+        .color( d3.scale.category20().range() )
         .useInteractiveGuideline(true);
 
         chart.xAxis
