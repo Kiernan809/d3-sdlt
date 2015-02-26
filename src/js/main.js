@@ -37,16 +37,8 @@ function redraw() {
 
         nv.utils.windowResize(chart.update);
 
-// var circle = d3.select('#chart svg').append("circle")
-//     .attr("opacity", 0)
-//     .attr({
-//     r: 6,
-//     fill: 'darkred'
-
-// });
-
-    return chart;
-});
+        return chart;
+    });
 }
 
 d3.json( '/js/taxData.json', function(e, json) {
@@ -96,10 +88,12 @@ $(function() {
 
         var value = $('input').val();
 
-        inputValueData = inputToData( value )
+        inputValueData = inputToData( value );
         data = inputValueData.data;
+
         redraw();
 
+        d3.selectAll('#chart .lineV').remove();
         var verticalLine = d3.select('#chart svg .nv-linesWrap').append('line')
         .attr({
             'x1': 0,
@@ -112,7 +106,7 @@ $(function() {
 
         var position = data[0].values.length / inputValueData.inputIndex;
         position = d3.select('rect').attr('width') / position;
-        verticalLine.attr({ 'transform': 'translate(770.9302325581394,0)' });
+        verticalLine.attr({ 'transform': 'translate('+ position +')' });
 
 
         return false;
